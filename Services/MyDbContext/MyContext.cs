@@ -19,7 +19,11 @@ namespace Services.MyDbContext
 
         public DbSet<Product> Products { get; set; }
 
+       
+
    //     public DbSet<Category> Categories { get; set; }
+
+        //luego crear la interfaz de category y su implemnteacion
 
     }
 }
