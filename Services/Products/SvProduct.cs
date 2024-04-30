@@ -1,4 +1,5 @@
 ﻿using Entities;
+using Microsoft.EntityFrameworkCore;
 using Services.MyDbContext;
 using System;
 using System.Collections.Generic;
@@ -45,23 +46,15 @@ namespace Services.Products
 
         public List<Product> GetALLProducts()
         {
-            return myContext.Products.ToList();
+            return myContext.Products.Include(x =>x.Category).ToList();
 
         }
 
         public Product GetProductById(int id)
         {
-            Product productSearched = myContext.Products.Find(id);
+            return myContext.Products.Include(x => x.Category).SingleOrDefault(x => x.id == id);
 
-            if (productSearched is not null)
-            {
-                return productSearched;
-            }
-            else
-            {
-                return null;
-            }
-           
+
         }
 
         public Product UpdateProduct(int id,Product product)

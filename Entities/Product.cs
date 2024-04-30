@@ -11,5 +11,9 @@ namespace Entities
         public int id { get; set; }
         public string title { get; set; }
         public float price { get; set; }
+
+        public int CategoryId { get; set; }
+
+        public Category? Category { get; set; }
     }
 }

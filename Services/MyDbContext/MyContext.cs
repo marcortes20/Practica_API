@@ -19,9 +19,15 @@ namespace Services.MyDbContext
 
         public DbSet<Product> Products { get; set; }
 
-       
+      
+        public DbSet<Category> Categories { get; set; }
 
-   //     public DbSet<Category> Categories { get; set; }
+        protected override void OnModelCreating(ModelBuilder modelBuilder)
+        {
+            modelBuilder.Entity<Product>()
+                .HasOne(product => product.Category)
+                .WithMany(Category => Category.products);
+        }
 
         //luego crear la interfaz de category y su implemnteacion
 

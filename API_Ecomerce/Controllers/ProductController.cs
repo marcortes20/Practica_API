@@ -18,7 +18,7 @@ namespace API_Ecomerce.Controllers
         }
 
 
-        // GET api/PRODUCTS
+        // GET api/ProductsController
         [HttpGet]
         public IEnumerable<Product> Get()
         {
@@ -33,7 +33,30 @@ namespace API_Ecomerce.Controllers
         }
 
 
-        //Terminar los demas endponts
+        // POST api/<ProductsController>
+        [HttpPost]
+        public void Post([FromBody] Product product)
+        {
+            svProduct.AddProduct(product);
+        }
+
+        // PUT api/<ProductsController>/5
+        [HttpPut("{id}")]
+        public void Put(int id, [FromBody] Product product)
+        {
+            svProduct.UpdateProduct(id, new Product
+            {
+                price = product.price,
+                title = product.title,
+            });
+        }
+
+        // DELETE api/<ProductsController>/5
+        [HttpDelete("{id}")]
+        public void Delete(int id)
+        {
+            svProduct.DeleteProduct(id);
+        }
 
     }
 }
