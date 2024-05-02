@@ -48,6 +48,7 @@ namespace API_Ecomerce.Controllers
             {
                 price = product.price,
                 title = product.title,
+                CategoryId = product.CategoryId,
             });
         }
 

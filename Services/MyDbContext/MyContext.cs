@@ -27,6 +27,7 @@ namespace Services.MyDbContext
             modelBuilder.Entity<Product>()
                 .HasOne(product => product.Category)
                 .WithMany(Category => Category.products);
+               
         }
 
         //luego crear la interfaz de category y su implemnteacion
